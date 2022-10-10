@@ -1,0 +1,22 @@
+{
+  "name": "erita",
+  "version": "1.0.0",
+  "description": "erita is a middleware that provides validation on request objects.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aviranDev/erita.git"
+  },
+  "keywords": [
+    "erita"
+  ],
+  "author": "Aviran",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aviranDev/erita/issues"
+  },
+  "homepage": "https://github.com/aviranDev/erita#readme"
+}
