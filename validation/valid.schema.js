@@ -44,12 +44,12 @@ const validateSchema = (data, schema) => {
     }
 
     //Error length -> Smaller then minimum
-    if ((inputKey && inputValue.trim().length < value.min)) {
+    if ((inputKey && inputValue.length < value.min)) {
       return `${key} must be at least ${value.min} digits.`
     }
 
     //Error length -> Bigger then maximum
-    if ((inputKey && inputValue.trim().length > value.max)) {
+    if ((inputKey && inputValue.length > value.max)) {
       return `${key} must no more then ${value.max} digits.`
     }
 
