@@ -8,18 +8,29 @@ const preventAddinital = require('./valid.preventAddinital');
  * @param {*} schemaKeys 
  * @returns errors: differentKeys/preventAddinital or null
  */
-const validateKeys = (input, schemaKeys) => {
+const validateKeys = (input, schemaKeys, schema) => {
   const inputKeys = Object.keys(input);
 
-  const diffrenetError = differentKeys(inputKeys, schemaKeys);
-  if (diffrenetError) return diffrenetError;
+  let required = new Map();
 
-  const addedKeysError = preventAddinital(inputKeys, schemaKeys);
+  for (const [key, value] of schema.entries()) {
+    if (value.required) {
+      required.set(key, value.required);
+    }
+  }
+
+  const diffrenetError = differentKeys(inputKeys, schemaKeys, required);
+  if (diffrenetError) {
+    return diffrenetError;
+  }
+
+  const addedKeysError = preventAddinital(inputKeys, schemaKeys, required);
   if (addedKeysError) {
     return addedKeysError;
   }
 
   return null;
 };
+
 
 module.exports = validateKeys;

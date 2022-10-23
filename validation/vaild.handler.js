@@ -5,7 +5,7 @@ const validateSchema = require('./valid.schema');
 const validateHandler = (keys, schema) => {
   return async (req, res, next) => {
     /* validate Keys */
-    const errorKeys = validateKeys(req.body, keys);
+    const errorKeys = validateKeys(req.body, keys, schema);
     if (errorKeys) {
       return res.status(404).send(errorKeys)
     }
@@ -23,6 +23,6 @@ const validateHandler = (keys, schema) => {
     }
     next();
   };
-};
+}
 
 module.exports = validateHandler;

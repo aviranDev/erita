@@ -7,10 +7,11 @@
   * @param {*} schemaKeys 
   * @returns: the first key's value from the schema that missing at the request body.
   */
-const diffrenetKeys = (inputKeys, schemaKeys) => {
-  let findDiffrenetKeys = schemaKeys.filter(x => !inputKeys.includes(x));
+const diffrenetKeys = (inputKeys, schemaKeys, required) => {
+  let findDiffrenetKeys = schemaKeys.filter(x => !inputKeys.includes(x) && required.has(x));
+
   if (findDiffrenetKeys.length) {
-    return `${findDiffrenetKeys[0]} valid key is required`;
+    return `${findDiffrenetKeys[0]} key is required`;
   }
 
   return null

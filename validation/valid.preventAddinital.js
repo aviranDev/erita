@@ -5,12 +5,14 @@
  * @param {*} schemaKeys 
  * @returns error message with the invalid request body key.
   */
-const preventAddinital = (inputKeys, schemaKeys) => {
-  const noMacthed = JSON.stringify(inputKeys) !== JSON.stringify(schemaKeys);
-  if (noMacthed) {
-    const invalidKey = inputKeys.filter(x => !schemaKeys.includes(x));
-    return `Form contain non-essential fields. ${invalidKey} is invalid key.`
+const preventAddinital = (inputKeys, schemaKeys, required) => {
+
+  // const noMacthed = JSON.stringify(inputKeys) !== JSON.stringify(schemaKeys);
+  const invalidKey = inputKeys.filter(x => !schemaKeys.includes(x));
+  if (invalidKey.length) {
+    return `${invalidKey} is invalid key.`
   }
+
   return null;
 }
 
