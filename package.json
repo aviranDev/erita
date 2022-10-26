@@ -1,6 +1,6 @@
 {
   "name": "erita",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "erita is a middleware that provides validation on request objects.",
   "main": "index.js",
   "scripts": {
