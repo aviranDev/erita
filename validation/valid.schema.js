@@ -1,5 +1,5 @@
-import optionalKeys from './valid.optionalKeys.js';
-import objectType from './valid.objectType.js';
+const optionalKeys = require('./valid.optionalKeys.js');
+const objectType = require('./valid.objectType.js');
 
 const validateSchema = (data, schema) => {
   const map = new Map(Object.entries(data));
@@ -74,4 +74,4 @@ const validateSchema = (data, schema) => {
   return null;
 };
 
-export default validateSchema;
+module.exports = validateSchema;
