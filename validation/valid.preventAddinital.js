@@ -5,9 +5,8 @@
  * @param {*} schemaKeys 
  * @returns error message with the invalid request body key.
   */
-const preventAddinital = (inputKeys, schemaKeys, required) => {
+const preventAddinital = (inputKeys, schemaKeys) => {
 
-  // const noMacthed = JSON.stringify(inputKeys) !== JSON.stringify(schemaKeys);
   const invalidKey = inputKeys.filter(x => !schemaKeys.includes(x));
   if (invalidKey.length) {
     return `${invalidKey} is invalid key.`

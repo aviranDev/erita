@@ -1,5 +1,5 @@
-const optionalKeys = require('./valid.optionalKeys');
-const objectType = require('./valid.objectType');
+import optionalKeys from './valid.optionalKeys.js';
+import objectType from './valid.objectType.js';
 
 const validateSchema = (data, schema) => {
   const map = new Map(Object.entries(data));
@@ -44,12 +44,20 @@ const validateSchema = (data, schema) => {
     }
 
     //Error length -> Smaller then minimum
-    if ((inputKey && inputValue.length < value.min)) {
+    if ((inputKey && typeof inputValue === 'string' && inputValue.trim().length < value.min)) {
+      return `${key} must be at least ${value.min} characters long.`
+    }
+
+    if ((inputKey && typeof inputValue === 'number' && inputValue.length < value.min)) {
       return `${key} must be at least ${value.min} digits.`
     }
 
     //Error length -> Bigger then maximum
-    if ((inputKey && inputValue.length > value.max)) {
+    if ((inputKey && typeof inputValue === 'string' && (inputValue.trim().length > value.max))) {
+      return `${key} must no more then ${value.max} characters long.`
+    }
+
+    if ((inputKey && typeof inputValue === 'number' && inputValue.length > value.max)) {
       return `${key} must no more then ${value.max} digits.`
     }
 
@@ -66,4 +74,4 @@ const validateSchema = (data, schema) => {
   return null;
 };
 
-module.exports = validateSchema;
+export default validateSchema;
