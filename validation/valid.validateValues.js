@@ -9,9 +9,10 @@ const vlaidateValues = (data, schema) => {
   }
 
   for (const [key, value] of map.entries()) {
-    if (!value) return `${key} value is required.`
-    if (value.length < 1 && required.has(key)) return `${key} must be at least 1 characters long`
-    if (value.length > 1090) return `${key} must be no more than 1090 characters long`
+    if (typeof value === 'string' && !value.trim() && required.has(key)) return `${key} value is required.`;
+    if (!value && required.has(key)) return `${key} value is required.`;
+    if (value.length < 1 && required.has(key)) return `${key} must be at least 1 characters long`;
+    if (value.length > 1090) return `${key} must be no more than 1090 characters long`;
   }
   return null;
 };
