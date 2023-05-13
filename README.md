@@ -1,6 +1,6 @@
 # erita
 
- ![NPM version](https://img.shields.io/npm/v/erita)
+  [![NPM version](https://img.shields.io/npm/v/erita)](https://www.npmjs.com/package/erita)
 
 erita is a node.js middleware for handling validations on request objects.
 It works as a request level validation for requset body keys and values.
