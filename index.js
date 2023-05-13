@@ -20,7 +20,7 @@ const erita = Object.create({
         const options = ['key', 'optional'];
         const keys = Object.keys(object);
         const error = optionalKeys(keys, options);
-        return error ? [object.key = 'Incorrect keyword: (key/optional).'] : [object.key, object.optional || {}];
+        return error ?? [object.key, object.optional];
       }),
     );
     const keys = getSchemaKeys(map);

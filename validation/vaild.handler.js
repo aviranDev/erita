@@ -7,19 +7,19 @@ const validateHandler = (keys, schema) => {
     /* validate Keys */
     const errorKeys = validateKeys(req.body, keys, schema);
     if (errorKeys) {
-      return res.status(404).send(errorKeys)
+      return res.status(404).send({ message: errorKeys })
     }
 
     /* validate Values */
     const errorValues = validateValues(req.body, schema);
     if (errorValues) {
-      return res.status(403).send(errorValues)
+      return res.status(403).send({ message: errorValues })
     }
 
     //Validate Schema
     const errorSchema = validateSchema(req.body, schema)
     if (errorSchema) {
-      return res.status(400).send(errorSchema)
+      return res.status(400).send({ message: errorSchema })
     }
     next();
   };

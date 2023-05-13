@@ -8,7 +8,7 @@
 const optionalKeys = (inputKeys, schemaKeys) => {
   const invalidKey = inputKeys.filter(x => !schemaKeys.includes(x));
   if (invalidKey.length) {
-    return `Error from Schema: ${invalidKey} is invalid optinal key.`
+    return { message: `Error from Schema: ${invalidKey} is invalid optinal key.` }
   }
 
   return null;
